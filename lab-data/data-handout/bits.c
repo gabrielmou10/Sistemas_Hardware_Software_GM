@@ -16,7 +16,7 @@
 /* Referencias:
 * https://github.com/94kazakov/CodeSample/blob/master/bits.c
 * https://github.com/lmichalek/CodeSamples/blob/master/bit-manipulation/bits.c
-* https://github.com/ejones23/ECEN324/blob/master/bits.c
+
 
 */
 
@@ -287,9 +287,11 @@ int isEqual(int x, int y) {
  *   Rating: 3
  */
 int subOK(int x, int y) {
-  int v = ~x + y;
-  
-  return !(v ^ v);
+    long long v1 = x;
+    long long v2 = y;
+    long long n1 = ~v1 + v2;
+    int n2 = n1;
+    return !(n1 ^ n2);
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
@@ -310,7 +312,8 @@ int isNonNegative(int x) {
  *   Rating: 4
  */
 int isPower2(int x) {
-  return 2;
+  int v1 = !(x >> 31);
+  return  v1 & (!!x) & !((x + ~1 + 1) & x);
 }
 /* float */
 /* 
